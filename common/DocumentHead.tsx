@@ -6,8 +6,8 @@ const DocumentHead = () => {
   return (
     <>
       <Head>
-        <title>TNSC Car pool</title>
-        <meta name="description" content="tnsc local surf forecast" />
+        <title>Car pool calculator</title>
+        <meta name="description" content="car pool calculator app" />
         <meta
           name="viewport"
           content="width=device-width, height=device-height, initial-scale=1"
