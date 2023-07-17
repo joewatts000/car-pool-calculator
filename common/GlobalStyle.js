@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   --header-height: 64px;
   --sticky-section-height: 86px;
   --padding: 16px;
+  --color-primary: #007bff;
 
   @media (min-width: 768px) {
     --sticky-section-height: 105px;

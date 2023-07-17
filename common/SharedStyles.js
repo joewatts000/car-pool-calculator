@@ -123,30 +123,24 @@ export const Input = styled.input`
     ${props => props.error && 'border-color: red;'}
   }
 `
-export const Button = styled.button`
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--border-color);
-  height: 40px;
-  text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  color: inherit;
-  transition: all 0.4s;
-  font-size: 16px;
-  background-color: white;
-  width: 100%;
-  max-width: 600px;
-
-  &:hover {
-    background-color: black;
-    color: white;
-  }
-  &:active {
-    background-color: black;
-    color: white;
-  }
-`
 export const Center = styled.p`
   text-align: center;
 `
+export const Button = styled.button`
+font-size: 1rem;
+padding: 1rem 0;
+border-radius: 0.5rem;
+border: 1px solid var(--color-primary);
+background-color: var(--color-primary);
+color: white;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s ease-in-out;
+flex: 0 1 13rem;
+white-space: nowrap;
+
+&:hover {
+  background-color: white;
+  color: var(--color-primary);
+}
+`;

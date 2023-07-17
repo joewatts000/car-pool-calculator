@@ -7,9 +7,6 @@ const Box = styled.div`
   z-index: 3;
   font-family: var(--font-mono);
   padding: 8px;
-  position: fixed;
-  top: 0;
-  height: var(--header-height);
   background-color: white;
   text-align: center;
 `;
