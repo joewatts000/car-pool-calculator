@@ -1,19 +1,18 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Button } from '../../common/SharedStyles';
-import Popup from '../../components/Popup';
-import AddPassenger from './Passenger';
+import Popup from '../Popup';
+import AddPassenger from '../passenger/Passenger';
 
 const Box = styled.div`
-  max-width: 600px;
-  margin: auto;
   padding: 1rem 0;
-  position: relative;
+  max-width: 100%;
 `;
 const Square = styled.div`
   border: 1px solid black;
   padding: 1rem;
   border-radius: 10px;
+  position: relative;
 `;
 const People = styled.div`
   display: flex;
@@ -41,16 +40,17 @@ const Buttons = styled.div`
 const VehicleInfo = styled.div`
   text-align: center;
 `;
-const DeleteButton = styled.div`
+const DeleteButton = styled.img`
   position: absolute;
   top: 0;
   right: 0;
   width: 20px;
   height: 20px;
-  border: 1px solid black;
-  border-radius: 50%;
-  background-color: red;
   cursor: pointer;
+`;
+const CarDeleteButton = styled(DeleteButton)`
+  top: 10px;
+  right: 10px;
 `;
 const Image = styled.img`
   width: 100%;
@@ -63,9 +63,22 @@ const PassengerName = styled.div`
   left: 0;
   right: 0;
   text-align: center;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
-const getFirstCharOfName = (name: string) => name.charAt(0).toUpperCase();
+const SeatBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 20px;
+  position: relative;
+`;
 
 const getArrayFromNumber = (number: number) => Array.from(Array(number).keys());
 
@@ -94,39 +107,51 @@ const Car = ({ car, deleteCar, index }) => {
   };
 
   const handlePassengerSubmit = useCallback(
-    (image, name) => {
-      setPassengers([...passengers, { image, name }]);
+    (image, passengerName) => {
+      if (passengerName && passengers.length < car.seats - 1) {
+        setPassengers([...passengers, { image, name: passengerName }]);
+      }
+    },
+    [passengers, car.seats]
+  );
+
+  const deletePassenger = useCallback(
+    (passengerToDelete) => {
+      setPassengers(
+        passengers.filter((passenger) => passenger !== passengerToDelete)
+      );
     },
     [passengers]
   );
 
+  console.log(passengers.length);
   return (
     <Box>
       <Square>
         <VehicleInfo>Departs: {car.departureTime}</VehicleInfo>
         <People>
           <Seat>
-            {driver.name && (
-              <>
-                <Image
-                  src="https://tnsc-wave-car-pool.vercel.app/Clive.jpeg"
-                  alt={driver.name}
-                />
-                <PassengerName>{getFirstCharOfName(driver.name)}</PassengerName>
-              </>
+            {driver.image ? (
+              <Image
+                src="https://tnsc-wave-car-pool.vercel.app/Clive.jpeg"
+                alt={driver.name}
+              />
+            ) : (
+              <>{driver.name && <PassengerName>{driver.name}</PassengerName>}</>
             )}
           </Seat>
           {passengers.map((passenger, index) => (
             <Seat key={index}>
-              {passenger.name && (
+              {passenger.image ? (
+                <Image
+                  src="https://tnsc-wave-car-pool.vercel.app/Clive.jpeg"
+                  alt={passenger.name}
+                />
+              ) : (
                 <>
-                  <Image
-                    src="https://tnsc-wave-car-pool.vercel.app/Clive.jpeg"
-                    alt={passenger.name}
-                  />
-                  <PassengerName>
-                    {getFirstCharOfName(passenger.name)}
-                  </PassengerName>
+                  {passenger.name && (
+                    <PassengerName>{passenger.name}</PassengerName>
+                  )}
                 </>
               )}
             </Seat>
@@ -138,10 +163,14 @@ const Car = ({ car, deleteCar, index }) => {
           )}
         </People>
         <Buttons>
-          <Button onClick={openDriverPopup}>Add Driver</Button>
-          <Button onClick={openPassengerPopup}>Add Passenger</Button>
+          <Button onClick={openDriverPopup}>
+            {driver.name ? 'Change' : 'Add'} Driver
+          </Button>
+          <Button onClick={openPassengerPopup}>
+            {passengers.length < 1 ? 'Add' : 'Change'} Passengers
+          </Button>
         </Buttons>
-        <DeleteButton onClick={() => deleteCar(index)} />
+        <CarDeleteButton onClick={() => deleteCar(index)} src="./delete.svg" />
       </Square>
       {isDriverPopupOpen && (
         <Popup>
@@ -153,6 +182,28 @@ const Car = ({ car, deleteCar, index }) => {
       )}
       {isPassengerPopupOpen && (
         <Popup>
+          {passengers.map((passenger, index) => (
+            <SeatBox key={index}>
+              <Seat>
+                {passenger.image ? (
+                  <Image
+                    src="https://tnsc-wave-car-pool.vercel.app/Clive.jpeg"
+                    alt={passenger.name}
+                  />
+                ) : (
+                  <>
+                    {passenger.name && (
+                      <PassengerName>{passenger.name}</PassengerName>
+                    )}
+                  </>
+                )}
+              </Seat>
+              <DeleteButton
+                onClick={() => deletePassenger(passenger)}
+                src="./delete.svg"
+              />
+            </SeatBox>
+          ))}
           <AddPassenger
             closePopup={closePassengerPopup}
             onSubmit={handlePassengerSubmit}

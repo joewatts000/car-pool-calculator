@@ -1,13 +1,20 @@
 import React, { useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
-import Car from './Car';
+import Car from '../../components/car/Car';
 import Popup from '../../components/Popup';
 import { Button } from '../../common/SharedStyles';
+import AddCarForm from '../../components/car/AddCarForm';
 
 const Main = styled.main`
   margin: auto;
   padding-top: ;
-  padding: var(--header-height) 1rem 1rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - var(--header-height));
+  width: 100%;
+  flex-direction: column;
 `;
 const Buttons = styled.div`
   display: flex;
@@ -16,51 +23,6 @@ const Buttons = styled.div`
   gap: 1rem;
   width: 100%;
 `;
-const getRandomFutureDate = () => {
-  const now = new Date().getTime();
-  const random = Math.random() * 1000 * 60 * 60 * 24 * 7;
-  return new Date(now + random).toISOString().slice(0, 16);
-};
-
-const PopupContent = ({ closePopup, addCar }) => {
-  const seatsRef = useRef(null);
-  const departureRef = useRef(null);
-  const returnRef = useRef(null);
-
-  const handleSubmit = useCallback(() => {
-    const seats = parseInt(seatsRef.current.value);
-    const departureTime = departureRef.current.value;
-    const returnTime = returnRef.current.value;
-
-    addCar({ seats, departureTime, returnTime });
-    closePopup();
-  }, [addCar, closePopup]);
-
-  return (
-    <>
-      <div>
-        Seats: <input type="number" min="1" ref={seatsRef} defaultValue={5} />
-      </div>
-      <div>
-        Departure:{' '}
-        <input
-          type="datetime-local"
-          ref={departureRef}
-          defaultValue={getRandomFutureDate()}
-        />
-      </div>
-      <div>
-        Return:{' '}
-        <input
-          type="datetime-local"
-          ref={returnRef}
-          defaultValue={getRandomFutureDate()}
-        />
-      </div>
-      <Button onClick={handleSubmit}>Create car</Button>
-    </>
-  );
-};
 
 const HomeContent = () => {
   const [cars, setCars] = useState([]);
@@ -104,7 +66,7 @@ const HomeContent = () => {
         ))}
         {popupOpen && (
           <Popup>
-            <PopupContent closePopup={closePopup} addCar={addCar} />
+            <AddCarForm closePopup={closePopup} addCar={addCar} />
           </Popup>
         )}
       </Main>

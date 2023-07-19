@@ -127,20 +127,25 @@ export const Center = styled.p`
   text-align: center;
 `
 export const Button = styled.button`
-font-size: 1rem;
-padding: 1rem 0;
-border-radius: 0.5rem;
-border: 1px solid var(--color-primary);
-background-color: var(--color-primary);
-color: white;
-font-weight: 700;
-cursor: pointer;
-transition: all 0.2s ease-in-out;
-flex: 0 1 13rem;
-white-space: nowrap;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  width: fit-content;
 
-&:hover {
-  background-color: white;
-  color: var(--color-primary);
-}
+  @media (min-width: 768px) {
+    flex: 0 1 10rem;
+    min-width: 10rem;
+  }
+
+  &:hover {
+    background-color: white;
+    color: var(--color-primary);
+  }
 `;
