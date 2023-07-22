@@ -25,12 +25,14 @@ const Content = styled.div`
   z-index: 2;
   background-color: white;
   padding: 1rem;
+  width: calc(100% - 32px);
+  border-radius: 4px;
 `;
 
-const Popup = ({ children }) => {
+const Popup = ({ children, closePopup }) => {
   return (
     <Box>
-      <Background />
+      <Background onClick={closePopup} />
       <Content>{children}</Content>
     </Box>
   );

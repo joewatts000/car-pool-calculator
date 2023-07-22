@@ -1,7 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
-import { Button } from '../../common/SharedStyles';
-// import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Button, Divider, FlexCenter } from '../../common/SharedStyles';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const getRandomFutureDate = () => {
@@ -17,10 +16,6 @@ interface Values {
 }
 
 const AddCarForm = ({ closePopup, addCar }) => {
-  const seatsRef = useRef(null);
-  const departureRef = useRef(null);
-  const returnRef = useRef(null);
-
   const handleSubmit = useCallback(
     (data) => {
       const { seats, departureTime, returnTime } = data;
@@ -42,89 +37,49 @@ const AddCarForm = ({ closePopup, addCar }) => {
           values: Values,
           { setSubmitting }: FormikHelpers<Values>
         ) => {
-          alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
           handleSubmit(values);
         }}
       >
         <Form>
-          <label htmlFor="seats">Seats</label>
-          <Field id="seats" name="seats" />
-          <label htmlFor="departureTime">Depart</label>
-          <Field
-            id="departureTime"
-            name="departureTime"
-            type="datetime-local"
-          />
-          <label htmlFor="returnTime">Return</label>
-          <Field id="returnTime" name="returnTime" type="datetime-local" />
-
-          <Button type="submit">Submit</Button>
+          <FieldGroup>
+            <Label htmlFor="seats">Seats</Label>
+            <Field id="seats" name="seats" type="number" min="1" max="10" />
+          </FieldGroup>
+          <FieldGroup>
+            <Label htmlFor="departureTime">Depart</Label>
+            <Field
+              id="departureTime"
+              name="departureTime"
+              type="datetime-local"
+            />
+          </FieldGroup>
+          <FieldGroup>
+            <Label htmlFor="returnTime">Return</Label>
+            <Field id="returnTime" name="returnTime" type="datetime-local" />
+          </FieldGroup>
+          <Divider height={20} />
+          <FlexCenter>
+            <Button type="submit">Submit</Button>
+          </FlexCenter>
         </Form>
       </Formik>
-      {/* <Formik
-        initialValues={{
-          seats: 5,
-          departure: getRandomFutureDate(),
-          return: getRandomFutureDate(),
-        }}
-        validate={(values) => {
-          console.log('validating');
-          const errors = {
-            seats: null,
-            departure: null,
-            return: null,
-          };
-          if (!values.seats) {
-            console.log('error');
-            errors.seats = 'Required';
-          } else if (isNaN(values.seats)) {
-            console.log('error');
-            errors.seats = 'Invalid seats';
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log('submitting: ', values);
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({ isSubmitting, isValidating }) => (
-          <Form>
-            <InputBox>
-              Seats: <Field type="number" min="1" name="seats" />
-              <ErrorMessage name="seats" component="div" />
-            </InputBox>
-            <InputBox>
-              Departure:{' '}
-              <Field type="datetime-local" min="1" name="departure" />
-              <ErrorMessage name="departure" component="div" />
-            </InputBox>
-            <InputBox>
-              Return: <Field type="datetime-local" name="return" />
-              <ErrorMessage name="return" component="div" />
-            </InputBox>
-            <Button type="submit" disabled={isSubmitting}>
-              Submit
-            </Button>
-            <div>
-              {isValidating}, {isSubmitting}
-            </div>
-          </Form>
-        )}
-      </Formik> */}
     </Box>
   );
 };
 
 const Box = styled.div``;
-const InputBox = styled.div`
+const Label = styled.label`
+  display: block;
+  min-width: 50px;
+`;
+const FieldGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 16px;
 `;
 
 export default AddCarForm;

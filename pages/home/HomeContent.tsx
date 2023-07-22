@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useRef } from 'react';
 import styled from 'styled-components';
-import Car from '../../components/car/Car';
 import Popup from '../../components/Popup';
-import { Button } from '../../common/SharedStyles';
 import AddCarForm from '../../components/car/AddCarForm';
+import Vehicles from '../../components/Vehicles';
+import Controls from '../../components/Controls';
 
 const Main = styled.main`
   margin: auto;
@@ -15,13 +15,6 @@ const Main = styled.main`
   height: calc(100vh - var(--header-height));
   width: 100%;
   flex-direction: column;
-`;
-const Buttons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
 `;
 
 const HomeContent = () => {
@@ -58,14 +51,10 @@ const HomeContent = () => {
   return (
     <>
       <Main>
-        <Buttons>
-          <Button onClick={openPopup}>Add Vehicle</Button>
-        </Buttons>
-        {cars.map((car, index) => (
-          <Car key={index} car={car} deleteCar={deleteCar} index={index} />
-        ))}
+        <Vehicles deleteCar={deleteCar} cars={cars} />
+        <Controls openPopup={openPopup} />
         {popupOpen && (
-          <Popup>
+          <Popup closePopup={closePopup}>
             <AddCarForm closePopup={closePopup} addCar={addCar} />
           </Popup>
         )}

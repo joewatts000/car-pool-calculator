@@ -3,25 +3,16 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
   :root {
   --max-width: 1100px;
-  --border-radius: 12px;
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --header-height: 64px;
-  --sticky-section-height: 86px;
-  --padding: 16px;
-  --color-primary: #007bff;
 
-  @media (min-width: 768px) {
-    --sticky-section-height: 105px;
-  }
+  --color-primary: #5368d4;
 
   --border-color: #d5d5d5;
   --border-color-focus: blue;
+
   --select-focus: blue;
   --select-arrow: var(--select-border);
-  --header-height: 70px;
-  --standard-padding: 24px;
+
+  --header-height: 50px;
 }
 
 * {
@@ -42,7 +33,7 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   position: relative;
-  font-family: 'Helvetica',sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
 }
 h1 {
   margin: 10px 0;
@@ -69,4 +60,21 @@ p {
   font-weight: 400;
 }
 
-`
+input {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 28px;
+  padding: 8px 16px;
+  width: 100%;
+  min-height: 44px;
+  border: unset;
+  border-radius: 4px;
+  outline-color: rgb(84 105 212 / 0.5);
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+`;
