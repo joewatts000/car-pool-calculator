@@ -2,17 +2,23 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Popup from '../Popup';
 import AddPassenger from '../passenger/Passenger';
-import { DeleteButton } from '../../common/SharedStyles';
+import { DeleteButton, Divider } from '../../common/SharedStyles';
 import Seat from './Seat';
 
 const SeatBox = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 20px;
+  padding: 1rem 0;
   position: relative;
+`;
+const SectionTitle = styled.div`
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 12px;
 `;
 
 const PassengerPopup = ({
@@ -23,7 +29,8 @@ const PassengerPopup = ({
 }) => {
   const handlePassengerSubmit = useCallback(
     (image, passengerName) => {
-      if (passengerName && passengers.length < car.seats - 1) {
+      // console.log(image, passengerName);
+      if (passengerName && passengers.length < car.seats) {
         setPassengers([...passengers, { image, name: passengerName }]);
       }
     },
@@ -41,19 +48,28 @@ const PassengerPopup = ({
 
   return (
     <Popup closePopup={closePassengerPopup}>
+      {passengers.length > 0 && <SectionTitle>Passengers</SectionTitle>}
       {passengers.map((passenger, index) => (
         <SeatBox key={index}>
-          <Seat person={passenger} />
+          <div>{passenger.name}</div>
           <DeleteButton
             onClick={() => deletePassenger(passenger)}
             src="./delete.svg"
           />
         </SeatBox>
       ))}
-      <AddPassenger
-        closePopup={closePassengerPopup}
-        onSubmit={handlePassengerSubmit}
-      />
+      <Divider height={20} />
+      {passengers.length < car.seats ? (
+        <>
+          <SectionTitle>Add new passenger</SectionTitle>
+          <AddPassenger
+            closePopup={closePassengerPopup}
+            onSubmit={handlePassengerSubmit}
+          />
+        </>
+      ) : (
+        <p>Car is full</p>
+      )}
     </Popup>
   );
 };

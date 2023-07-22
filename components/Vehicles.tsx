@@ -21,12 +21,22 @@ const Box = styled.div`
   }
 `;
 
-const Vehicles = ({ cars, deleteCar }) => {
+const Vehicles = ({ cars, deleteCar, updateCar }) => {
   return (
     <Box>
-      {cars.map((car, index) => (
-        <Car key={index} car={car} deleteCar={deleteCar} index={index} />
-      ))}
+      {cars.length > 0 ? (
+        cars.map((car, index) => (
+          <Car
+            key={index}
+            car={car}
+            deleteCar={deleteCar}
+            index={index}
+            updateCar={updateCar}
+          />
+        ))
+      ) : (
+        <p>Add a vehicle to start</p>
+      )}
     </Box>
   );
 };

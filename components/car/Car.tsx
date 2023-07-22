@@ -48,25 +48,28 @@ const Departure = styled.div``;
 
 const getArrayFromNumber = (number: number) => Array.from(Array(number).keys());
 
-const Car = ({ car, deleteCar, index }) => {
-  const [driver, setDriver] = React.useState({ image: '', name: '' });
+const Car = ({ car, deleteCar, index, updateCar }) => {
+  // const [driver, setDriver] = React.useState({ image: '', name: '' });
   const [passengers, setPassengers] = React.useState([]);
-  const [isDriverPopupOpen, setIsDriverPopupOpen] = React.useState(false);
+  // const [isDriverPopupOpen, setIsDriverPopupOpen] = React.useState(false);
   const [isPassengerPopupOpen, setIsPassengerPopupOpen] = React.useState(false);
 
-  const openDriverPopup = () => {
-    setIsDriverPopupOpen(true);
-  };
-  const closeDriverPopup = () => {
-    setIsDriverPopupOpen(false);
-  };
+  // const openDriverPopup = () => {
+  //   setIsDriverPopupOpen(true);
+  // };
+  // const closeDriverPopup = () => {
+  //   setIsDriverPopupOpen(false);
+  // };
 
   const openPassengerPopup = () => {
     setIsPassengerPopupOpen(true);
   };
   const closePassengerPopup = () => {
     setIsPassengerPopupOpen(false);
+    updateCar(index, { ...car, passengers });
   };
+
+  console.log(passengers);
 
   return (
     <Box>
@@ -77,8 +80,7 @@ const Car = ({ car, deleteCar, index }) => {
         </VehicleInfo>
         <Departure>Departs: {car.departureTime}</Departure>
         <People>
-          <Seat person={driver} />
-          {getArrayFromNumber(car.seats - 1).map((_seat, index) => (
+          {getArrayFromNumber(car.seats).map((_seat, index) => (
             <Seat key={index} person={passengers[index] ?? { name: '' }} />
           ))}
         </People>
@@ -91,12 +93,12 @@ const Car = ({ car, deleteCar, index }) => {
           </Button>
         </Buttons>
       </Square>
-      {isDriverPopupOpen && (
+      {/* {isDriverPopupOpen && (
         <DriverPopup
           closeDriverPopup={closeDriverPopup}
           setDriver={setDriver}
         />
-      )}
+      )} */}
       {isPassengerPopupOpen && (
         <PassengerPopup
           closePassengerPopup={closePassengerPopup}

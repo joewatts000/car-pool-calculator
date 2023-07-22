@@ -46,11 +46,26 @@ const HomeContent = () => {
     });
   }, []);
 
+  const updateCar = useCallback(
+    (index: number, car: any) => {
+      setCars((prevCars) => {
+        const newCars = [...prevCars];
+        newCars[index] = car;
+        return newCars;
+      });
+    },
+    [setCars]
+  );
+
+  const resetCars = () => {
+    setCars([]);
+  };
+
   return (
     <>
       <Main>
-        <Vehicles deleteCar={deleteCar} cars={cars} />
-        <Controls openPopup={openPopup} />
+        <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
+        <Controls openPopup={openPopup} resetCars={resetCars} />
         {popupOpen && (
           <Popup closePopup={closePopup}>
             <AddCarForm closePopup={closePopup} addCar={addCar} />

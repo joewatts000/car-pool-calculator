@@ -7,39 +7,35 @@ import {
   FlexCenter,
   Label,
 } from '../../common/SharedStyles';
-import { Form, Formik, FormikHelpers } from 'formik';
+import { Form, Formik, FormikHelpers, Field } from 'formik';
 
 interface Values {
-  image: File;
-  name: string;
+  image: any;
+  passengerName: string;
 }
 
 const AddPassenger = ({ closePopup, onSubmit }) => {
   const [image, setImage] = useState('');
-  const [name, setName] = useState('');
 
   const handleSubmit = useCallback(
     (data) => {
-      const { image, name } = data;
-      setName(name);
-      onSubmit(image, name);
+      const { passengerName } = data;
+      onSubmit(image, passengerName);
       closePopup();
     },
-    [closePopup, onSubmit]
+    [closePopup, onSubmit, image]
   );
 
   const onChange = (e: any) => {
-    setImage(e.target.files[0].name);
+    setImage(e.target.value);
   };
-
-  console.log(image, name);
 
   return (
     <div>
       <Formik
         initialValues={{
-          image: null,
-          name: '',
+          image: '',
+          passengerName: '',
         }}
         onSubmit={(
           values: Values,
@@ -51,15 +47,15 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
       >
         <Form>
           <FieldGroup>
-            <Label htmlFor="file">Image</Label>
-            <div>
-              <FileInput type="file" name="upload-image" onChange={onChange} />
+            <Label htmlFor="image">Image</Label>
+            <FileInputBox>
+              <Field type="file" name="image" onChange={onChange} id="image" />
               <FileName>{image}</FileName>
-            </div>
+            </FileInputBox>
           </FieldGroup>
           <FieldGroup>
-            <Label htmlFor="name">Name</Label>
-            <input type="text" name="name" />
+            <Label htmlFor="passengerName">Name</Label>
+            <Field type="text" name="passengerName" id="passengerName" />
           </FieldGroup>
           <Divider height={20} />
           <FlexCenter>
@@ -71,8 +67,10 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
   );
 };
 
-const FileInput = styled.input`
-  height: 48px;
+const FileInputBox = styled.div`
+  input {
+    height: 48px;
+  }
 `;
 const FileName = styled.div`
   padding: 8px 0px;

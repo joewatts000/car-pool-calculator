@@ -20,17 +20,15 @@ const FooterButton = styled(Button)`
   padding: 0.5rem;
 `;
 
-const Controls = ({ openPopup }) => {
+const Controls = ({ openPopup, resetCars }) => {
   const saveConfig = () => {};
-  const loadConfig = () => {};
-  const resetConfig = () => {};
   const screenshot = () => {};
 
   return (
     <Box>
       <FooterButton onClick={openPopup}>Add Vehicle</FooterButton>
       <FooterButton onClick={saveConfig}>Save</FooterButton>
-      <FooterButton onClick={resetConfig}>Reset</FooterButton>
+      <FooterButton onClick={resetCars}>Reset</FooterButton>
       <FooterButton onClick={screenshot}>Screenshot</FooterButton>
     </Box>
   );
