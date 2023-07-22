@@ -9,8 +9,9 @@ const Box = styled.div`
   gap: 0.5rem;
   width: 100%;
   margin-top: auto;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   background-color: #fff;
+  border-top: 2px solid rgb(83 104 212 / 80%);
 `;
 
 const FooterButton = styled(Button)`

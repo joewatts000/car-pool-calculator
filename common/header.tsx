@@ -4,13 +4,11 @@ import styled from 'styled-components';
 const Box = styled.div`
   font-size: 0.85rem;
   width: 100%;
-  z-index: 3;
-  font-family: var(--font-mono);
   padding: 8px;
   background-color: white;
   text-align: center;
   height: var(--header-height);
-  box-shadow: 0 0 0 2px rgb(83 104 212 / 30%);
+  border-bottom: 2px solid rgb(83 104 212 / 80%);
   display: flex;
   align-items: center;
   justify-content: center;

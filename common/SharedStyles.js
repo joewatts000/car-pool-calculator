@@ -166,3 +166,20 @@ export const DeleteButton = styled.img`
   height: 20px;
   cursor: pointer;
 `;
+
+export const boxShadow = `
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+`;
+
+export const FieldGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 16px;
+`;
+export const Label = styled.label`
+  display: block;
+  min-width: 50px;
+`;

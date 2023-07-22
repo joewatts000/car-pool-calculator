@@ -1,24 +1,38 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import { Button, DeleteButton } from '../../common/SharedStyles';
+import { Button, DeleteButton, boxShadow } from '../../common/SharedStyles';
 import DriverPopup from './DriverPopup';
 import PassengerPopup from './PassengerPopup';
 import Seat from './Seat';
 
 const Box = styled.div`
   padding: 1rem 0;
-  max-width: 100%;
+  max-width: calc(100% - 22px);
 `;
 const Square = styled.div`
-  border: 1px solid var(--color-primary);
+  box-shadow: rgba(60, 66, 87, 0.3) 0px 0px 14px 0px;
   padding: 1rem;
   border-radius: 8px;
   position: relative;
+  border: 1px solid #dedede;
+`;
+const VehicleInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 12px;
+`;
+const Title = styled.div`
+  font-weight: 600;
+  text-transform: uppercase;
 `;
 const People = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 1rem;
   margin-bottom: 20px;
@@ -30,17 +44,7 @@ const Buttons = styled.div`
   gap: 1rem;
   width: 100%;
 `;
-const VehicleInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-`;
 const Departure = styled.div``;
-const CarDeleteButton = styled(DeleteButton)`
-  top: 10px;
-  right: 10px;
-`;
 
 const getArrayFromNumber = (number: number) => Array.from(Array(number).keys());
 
@@ -68,28 +72,20 @@ const Car = ({ car, deleteCar, index }) => {
     <Box>
       <Square>
         <VehicleInfo>
-          Car: {index + 1}
-          <CarDeleteButton
-            onClick={() => deleteCar(index)}
-            src="./delete.svg"
-          />
+          <Title>Car {index + 1}</Title>
+          <DeleteButton onClick={() => deleteCar(index)} src="./delete.svg" />
         </VehicleInfo>
         <Departure>Departs: {car.departureTime}</Departure>
         <People>
           <Seat person={driver} />
-          {passengers.map((passenger, index) => (
-            <Seat key={index} person={passenger} />
+          {getArrayFromNumber(car.seats - 1).map((_seat, index) => (
+            <Seat key={index} person={passengers[index] ?? { name: '' }} />
           ))}
-          {getArrayFromNumber(car.seats - passengers.length - 1).map(
-            (_seat, index) => (
-              <Seat key={index} person={{ name: '' }} />
-            )
-          )}
         </People>
         <Buttons>
-          <Button onClick={openDriverPopup}>
+          {/* <Button onClick={openDriverPopup}>
             {driver.name ? 'Change' : 'Add'} Driver
-          </Button>
+          </Button> */}
           <Button onClick={openPassengerPopup}>
             {passengers.length < 1 ? 'Add' : 'Change'} Passengers
           </Button>

@@ -77,4 +77,16 @@ input {
     rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 }
 
+input[type="file" i]::-webkit-file-upload-button {
+  font-family: inherit;
+  background-color: var(--color-primary);
+  color: white;
+  border: unset;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
 `;

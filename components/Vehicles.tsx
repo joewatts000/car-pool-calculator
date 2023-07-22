@@ -11,6 +11,9 @@ const Box = styled.div`
   flex-wrap: wrap;
   height: 100%;
   overflow-y: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
   ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

@@ -7,8 +7,6 @@ import Controls from '../../components/Controls';
 
 const Main = styled.main`
   margin: auto;
-  padding-top: ;
-  padding: 1rem 1rem 1rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,6 +1,12 @@
 import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components';
-import { Button, Divider, FlexCenter } from '../../common/SharedStyles';
+import {
+  Button,
+  Divider,
+  FieldGroup,
+  FlexCenter,
+  Label,
+} from '../../common/SharedStyles';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const getRandomFutureDate = () => {
@@ -69,17 +75,5 @@ const AddCarForm = ({ closePopup, addCar }) => {
 };
 
 const Box = styled.div``;
-const Label = styled.label`
-  display: block;
-  min-width: 50px;
-`;
-const FieldGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  width: 100%;
-  margin-bottom: 16px;
-`;
 
 export default AddCarForm;
