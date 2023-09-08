@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Header } from '../common/Header';
 import DocumentHead from '../common/DocumentHead';
-import { useWithLocalStorage } from '../misc/utils';
+import { Header } from '../common/Header';
 import { useIsClient } from '../misc/ClientContext';
 
 const Content = dynamic(() => import('./home/HomeContent'), {
