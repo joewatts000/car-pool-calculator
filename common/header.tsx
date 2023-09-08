@@ -20,12 +20,12 @@ const PageTitle = styled.h1`
   font-weight: 800;
 `;
 
-function Header() {
+const Header = () => {
   return (
     <Box>
       <PageTitle>Car Pool Calculator</PageTitle>
     </Box>
   );
-}
+};
 
 export default Header;
