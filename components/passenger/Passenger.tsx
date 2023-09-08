@@ -1,11 +1,10 @@
 import React, { useCallback, useState } from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import {
   Button,
   Divider,
   FieldGroup,
   FlexCenter,
-  Label,
 } from '../../common/SharedStyles';
 import { Form, Formik, FormikHelpers, Field } from 'formik';
 
@@ -56,7 +55,7 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
             </FileInputBox>
           </FieldGroup> */}
           <FieldGroup>
-            <Label htmlFor="passengerName">Name</Label>
+            <Label htmlFor="passengerName">Full Name</Label>
             <Field type="text" name="passengerName" id="passengerName" />
           </FieldGroup>
           <FieldGroup>
@@ -73,6 +72,10 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
   );
 };
 
+const Label = styled.label`
+  display: block;
+  min-width: 80px;
+`;
 // const FileInputBox = styled.div`
 //   input {
 //     height: 48px;
