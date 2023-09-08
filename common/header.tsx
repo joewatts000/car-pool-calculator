@@ -4,20 +4,28 @@ import styled from 'styled-components';
 const Box = styled.div`
   font-size: 0.85rem;
   width: 100%;
-  z-index: 3;
-  font-family: var(--font-mono);
   padding: 8px;
-  position: fixed;
-  top: 0;
-  height: var(--header-height);
   background-color: white;
   text-align: center;
+  height: var(--header-height);
+  border-bottom: 2px solid rgb(83 104 212 / 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const PageTitle = styled.h1`
+  margin: 0;
+  color: var(--color-primary);
+  letter-spacing: -1px;
+  font-weight: 800;
 `;
 
-export function Header() {
+const Header = () => {
   return (
     <Box>
-      <h1>Car Pool Calculator</h1>
+      <PageTitle>Car Pool Calculator</PageTitle>
     </Box>
   );
-}
+};
+
+export default Header;

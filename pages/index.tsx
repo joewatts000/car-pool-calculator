@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { Header } from '../common/header';
 import DocumentHead from '../common/DocumentHead';
-import { useWithLocalStorage } from '../misc/utils';
 import { useIsClient } from '../misc/ClientContext';
 
 const Content = dynamic(() => import('./home/HomeContent'), {
@@ -15,7 +13,6 @@ export default function Home() {
   return (
     <>
       <DocumentHead />
-      <Header />
       {isClient && <Content />}
     </>
   );

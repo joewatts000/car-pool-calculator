@@ -123,30 +123,62 @@ export const Input = styled.input`
     ${props => props.error && 'border-color: red;'}
   }
 `
-export const Button = styled.button`
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--border-color);
-  height: 40px;
-  text-align: center;
-  white-space: nowrap;
-  cursor: pointer;
-  color: inherit;
-  transition: all 0.4s;
-  font-size: 16px;
-  background-color: white;
-  width: 100%;
-  max-width: 600px;
-
-  &:hover {
-    background-color: black;
-    color: white;
-  }
-  &:active {
-    background-color: black;
-    color: white;
-  }
-`
 export const Center = styled.p`
   text-align: center;
 `
+export const Button = styled.button`
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  width: fit-content;
+
+  @media (min-width: 768px) {
+    flex: 0 1 10rem;
+    min-width: 10rem;
+  }
+
+  &:hover {
+    background-color: white;
+    color: var(--color-primary);
+  }
+`;
+
+export const FlexCenter = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Divider = styled.div`
+  width: 100%;
+  height: ${props => props.height || '1'}px;
+`;
+
+export const DeleteButton = styled.img`
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+`;
+
+export const boxShadow = `
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+`;
+
+export const FieldGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 16px;
+`;
+export const Label = styled.label`
+  display: block;
+  min-width: 50px;
+`;
