@@ -1,6 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useCallback, useState } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+import exportAsImage from '../misc/exportAsImage';
 import { Button } from '../common/SharedStyles';
+
+const ScreenshotStyles = createGlobalStyle`
+  body {
+    height: auto;
+  }
+
+  #scrolling-container {
+    height: auto;
+  }
+`;
 
 const Box = styled.div`
   display: flex;
@@ -21,15 +32,23 @@ const FooterButton = styled(Button)`
 `;
 
 const Controls = ({ openPopup, resetCars }) => {
-  const saveConfig = () => {};
-  const screenshot = () => {};
+  const [isScreenShotting, setIsScreenShotting] = useState(false);
+
+  const screenshot = useCallback(() => {
+    setIsScreenShotting(true);
+    setTimeout(() => {
+      exportAsImage(document.body, 'carpoolcalculator');
+      setIsScreenShotting(false);
+    }, 1000);
+  }, []);
 
   return (
     <Box>
       <FooterButton onClick={openPopup}>Add Vehicle</FooterButton>
-      <FooterButton onClick={saveConfig}>Save</FooterButton>
+      {/* <FooterButton onClick={saveConfig}>Save</FooterButton> */}
       <FooterButton onClick={resetCars}>Reset</FooterButton>
       <FooterButton onClick={screenshot}>Screenshot</FooterButton>
+      {isScreenShotting && <ScreenshotStyles />}
     </Box>
   );
 };

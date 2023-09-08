@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Popup from '../Popup';
 import AddPassenger from '../passenger/Passenger';
 import { DeleteButton, Divider } from '../../common/SharedStyles';
-import Seat from './Seat';
 
 const SeatBox = styled.div`
   display: flex;
@@ -28,10 +27,9 @@ const PassengerPopup = ({
   car,
 }) => {
   const handlePassengerSubmit = useCallback(
-    (image, passengerName) => {
-      // console.log(image, passengerName);
+    (passengerName, isDriver) => {
       if (passengerName && passengers.length < car.seats) {
-        setPassengers([...passengers, { image, name: passengerName }]);
+        setPassengers([...passengers, { name: passengerName, isDriver }]);
       }
     },
     [passengers, car.seats, setPassengers]

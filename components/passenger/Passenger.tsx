@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import {
   Button,
   Divider,
@@ -10,25 +10,26 @@ import {
 import { Form, Formik, FormikHelpers, Field } from 'formik';
 
 interface Values {
-  image: any;
+  // image: any;
   passengerName: string;
+  isDriver: boolean;
 }
 
 const AddPassenger = ({ closePopup, onSubmit }) => {
-  const [image, setImage] = useState('');
+  // const [image, setImage] = useState('');
 
   const handleSubmit = useCallback(
     (data) => {
-      const { passengerName } = data;
-      onSubmit(image, passengerName);
+      const { passengerName, isDriver } = data;
+      onSubmit(passengerName, isDriver);
       closePopup();
     },
-    [closePopup, onSubmit, image]
+    [closePopup, onSubmit]
   );
 
-  const onChange = (e: any) => {
-    setImage(e.target.value);
-  };
+  // const onChange = (e: any) => {
+  //   setImage(e.target.value);
+  // };
 
   return (
     <div>
@@ -36,6 +37,7 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
         initialValues={{
           image: '',
           passengerName: '',
+          isDriver: false,
         }}
         onSubmit={(
           values: Values,
@@ -46,16 +48,20 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
         }}
       >
         <Form>
-          <FieldGroup>
+          {/* <FieldGroup>
             <Label htmlFor="image">Image</Label>
             <FileInputBox>
               <Field type="file" name="image" onChange={onChange} id="image" />
               <FileName>{image}</FileName>
             </FileInputBox>
-          </FieldGroup>
+          </FieldGroup> */}
           <FieldGroup>
             <Label htmlFor="passengerName">Name</Label>
             <Field type="text" name="passengerName" id="passengerName" />
+          </FieldGroup>
+          <FieldGroup>
+            <Label htmlFor="isDriver">Is driver</Label>
+            <Field type="checkbox" name="isDriver" id="isDriver" />
           </FieldGroup>
           <Divider height={20} />
           <FlexCenter>
@@ -67,14 +73,14 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
   );
 };
 
-const FileInputBox = styled.div`
-  input {
-    height: 48px;
-  }
-`;
-const FileName = styled.div`
-  padding: 8px 0px;
-  text-align: center;
-`;
+// const FileInputBox = styled.div`
+//   input {
+//     height: 48px;
+//   }
+// `;
+// const FileName = styled.div`
+//   padding: 8px 0px;
+//   text-align: center;
+// `;
 
 export default AddPassenger;

@@ -174,7 +174,6 @@ export const boxShadow = `
 export const FieldGroup = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
   margin-bottom: 16px;

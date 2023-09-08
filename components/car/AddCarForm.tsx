@@ -24,7 +24,6 @@ interface Values {
 const AddCarForm = ({ closePopup, addCar }) => {
   const handleSubmit = useCallback(
     (data) => {
-      console.log(data);
       const { seats, departureTime, returnTime } = data;
       addCar({ seats, departureTime, returnTime });
       closePopup();

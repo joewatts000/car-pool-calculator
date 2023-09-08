@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import { Button, DeleteButton, boxShadow } from '../../common/SharedStyles';
-import DriverPopup from './DriverPopup';
+import { Button, DeleteButton } from '../../common/SharedStyles';
 import PassengerPopup from './PassengerPopup';
 import Seat from './Seat';
 
@@ -46,20 +45,19 @@ const Buttons = styled.div`
 `;
 const Departure = styled.div``;
 
+const getNiceDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return `${date.toLocaleDateString()} ${date.toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  })}`;
+};
+
 const getArrayFromNumber = (number: number) => Array.from(Array(number).keys());
 
 const Car = ({ car, deleteCar, index, updateCar }) => {
-  // const [driver, setDriver] = React.useState({ image: '', name: '' });
   const [passengers, setPassengers] = React.useState([]);
-  // const [isDriverPopupOpen, setIsDriverPopupOpen] = React.useState(false);
   const [isPassengerPopupOpen, setIsPassengerPopupOpen] = React.useState(false);
-
-  // const openDriverPopup = () => {
-  //   setIsDriverPopupOpen(true);
-  // };
-  // const closeDriverPopup = () => {
-  //   setIsDriverPopupOpen(false);
-  // };
 
   const openPassengerPopup = () => {
     setIsPassengerPopupOpen(true);
@@ -69,8 +67,6 @@ const Car = ({ car, deleteCar, index, updateCar }) => {
     updateCar(index, { ...car, passengers });
   };
 
-  console.log(passengers);
-
   return (
     <Box>
       <Square>
@@ -78,27 +74,18 @@ const Car = ({ car, deleteCar, index, updateCar }) => {
           <Title>Car {index + 1}</Title>
           <DeleteButton onClick={() => deleteCar(index)} src="./delete.svg" />
         </VehicleInfo>
-        <Departure>Departs: {car.departureTime}</Departure>
+        <Departure>Departs: {getNiceDate(car.departureTime)}</Departure>
         <People>
           {getArrayFromNumber(car.seats).map((_seat, index) => (
             <Seat key={index} person={passengers[index] ?? { name: '' }} />
           ))}
         </People>
         <Buttons>
-          {/* <Button onClick={openDriverPopup}>
-            {driver.name ? 'Change' : 'Add'} Driver
-          </Button> */}
           <Button onClick={openPassengerPopup}>
-            {passengers.length < 1 ? 'Add' : 'Change'} Passengers
+            {passengers.length < 1 ? 'Add' : 'Edit'} Passengers
           </Button>
         </Buttons>
       </Square>
-      {/* {isDriverPopupOpen && (
-        <DriverPopup
-          closeDriverPopup={closeDriverPopup}
-          setDriver={setDriver}
-        />
-      )} */}
       {isPassengerPopupOpen && (
         <PassengerPopup
           closePassengerPopup={closePassengerPopup}
