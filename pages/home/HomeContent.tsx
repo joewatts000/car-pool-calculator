@@ -1,22 +1,43 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Popup from '../../components/Popup';
 import AddCarForm from '../../components/car/AddCarForm';
 import Vehicles from '../../components/Vehicles';
 import Controls from '../../components/Controls';
-// import Header from '../../common/Header';
 
 const Main = styled.main`
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(${({ height }) => height}px - var(--header-height));
+  height: calc(
+    ${({ height }) => (height ? `${height}px` : '100%')} - var(--header-height)
+  );
   width: 100%;
   flex-direction: column;
 `;
 
+const Header = styled.div`
+  font-size: 0.85rem;
+  width: 100%;
+  padding: 8px;
+  background-color: white;
+  text-align: center;
+  height: var(--header-height);
+  border-bottom: 2px solid rgb(83 104 212 / 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const PageTitle = styled.h1`
+  margin: 0;
+  color: var(--color-primary);
+  letter-spacing: -1px;
+  font-weight: 800;
+`;
+
 const HomeContent = () => {
+  const [height, setHeight] = useState<number | null>(null);
   const [cars, setCars] = useState([]);
   const [popupOpen, setPopupOpen] = useState(false);
 
@@ -62,11 +83,15 @@ const HomeContent = () => {
     setCars([]);
   };
 
-  const height = window.innerHeight;
+  useEffect(() => {
+    setHeight(window.innerHeight);
+  }, []);
 
   return (
     <>
-      {/* <Header /> */}
+      <Header>
+        <PageTitle>Car Pool Calculator</PageTitle>
+      </Header>
       <Main id="scrolling-container" height={height}>
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
         <Controls openPopup={openPopup} resetCars={resetCars} />
