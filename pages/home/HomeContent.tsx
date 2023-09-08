@@ -79,13 +79,22 @@ const HomeContent = () => {
     [setCars]
   );
 
-  const resetCars = () => {
+  const resetCars = useCallback(() => {
     setCars([]);
-  };
+  }, []);
+
+  const handleResize = useCallback(() => {
+    setHeight(window.innerHeight);
+  }, []);
 
   useEffect(() => {
     setHeight(window.innerHeight);
   }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
 
   return (
     <>

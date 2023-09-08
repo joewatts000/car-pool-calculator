@@ -27,6 +27,7 @@ const Content = styled.div`
   background-color: white;
   padding: 1rem;
   width: calc(100% - 32px);
+  max-width: 500px;
   border-radius: 4px;
 `;
 
