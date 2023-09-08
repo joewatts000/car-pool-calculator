@@ -4,6 +4,7 @@ import Popup from '../../components/Popup';
 import AddCarForm from '../../components/car/AddCarForm';
 import Vehicles from '../../components/Vehicles';
 import Controls from '../../components/Controls';
+import Header from '../../common/Header';
 
 const Main = styled.main`
   margin: auto;
@@ -63,6 +64,7 @@ const HomeContent = () => {
 
   return (
     <>
+      <Header />
       <Main id="scrolling-container">
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
         <Controls openPopup={openPopup} resetCars={resetCars} />
