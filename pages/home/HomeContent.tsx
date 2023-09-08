@@ -11,7 +11,7 @@ const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(${window.innerHeight}px - var(--header-height));
+  height: calc(${({ height }) => height}px - var(--header-height));
   width: 100%;
   flex-direction: column;
 `;
@@ -62,10 +62,12 @@ const HomeContent = () => {
     setCars([]);
   };
 
+  const height = window.innerHeight;
+
   return (
     <>
       <Header />
-      <Main id="scrolling-container">
+      <Main id="scrolling-container" height={height}>
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
         <Controls openPopup={openPopup} resetCars={resetCars} />
         {popupOpen && (
