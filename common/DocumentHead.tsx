@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import { GlobalStyle } from './GlobalStyle';
 
 const DocumentHead = () => {
   return (
@@ -13,7 +12,7 @@ const DocumentHead = () => {
         />
         <meta
           name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta name="title" content="Car Pool Calculator" />
         <meta
@@ -29,7 +28,6 @@ const DocumentHead = () => {
         <meta name="language" content="English" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GlobalStyle />
     </>
   );
 };

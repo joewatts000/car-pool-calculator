@@ -8,6 +8,10 @@ const ScreenshotStyles = createGlobalStyle`
     height: auto;
   }
 
+  .hide-when-screenshot {
+    display: none;
+  }
+
   #scrolling-container {
     height: auto;
   }
@@ -31,7 +35,7 @@ const FooterButton = styled(Button)`
   padding: 0.5rem;
 `;
 
-const Controls = ({ openPopup, resetCars }) => {
+const Footer = ({ openPopup, resetCars }) => {
   const [isScreenShotting, setIsScreenShotting] = useState(false);
 
   const screenshot = useCallback(() => {
@@ -43,7 +47,7 @@ const Controls = ({ openPopup, resetCars }) => {
   }, []);
 
   return (
-    <Box>
+    <Box className="hide-when-screenshot">
       <FooterButton onClick={openPopup}>Add Vehicle</FooterButton>
       {/* <FooterButton onClick={saveConfig}>Save</FooterButton> */}
       <FooterButton onClick={resetCars}>Reset</FooterButton>
@@ -53,4 +57,4 @@ const Controls = ({ openPopup, resetCars }) => {
   );
 };
 
-export default Controls;
+export default Footer;

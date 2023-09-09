@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import Popup from '../../components/Popup';
 import AddCarForm from '../../components/car/AddCarForm';
 import Vehicles from '../../components/Vehicles';
-import Controls from '../../components/Controls';
+import Footer from '../../components/Footer';
+import { GlobalStyle } from '../../common/GlobalStyle';
 
 const Main = styled.main`
   margin: auto;
@@ -98,12 +99,13 @@ const HomeContent = () => {
 
   return (
     <>
+      <GlobalStyle height={height} />
       <Header>
         <PageTitle>Car Pool Calculator</PageTitle>
       </Header>
       <Main id="scrolling-container" height={height}>
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
-        <Controls openPopup={openPopup} resetCars={resetCars} />
+        <Footer openPopup={openPopup} resetCars={resetCars} />
         {popupOpen && (
           <Popup closePopup={closePopup}>
             <AddCarForm closePopup={closePopup} addCar={addCar} />

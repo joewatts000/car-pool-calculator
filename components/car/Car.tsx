@@ -72,7 +72,11 @@ const Car = ({ car, deleteCar, index, updateCar }) => {
       <Square>
         <VehicleInfo>
           <Title>Car {index + 1}</Title>
-          <DeleteButton onClick={() => deleteCar(index)} src="./delete.svg" />
+          <DeleteButton
+            onClick={() => deleteCar(index)}
+            src="./delete.svg"
+            className="hide-when-screenshot"
+          />
         </VehicleInfo>
         <Departure>Departs: {getNiceDate(car.departureTime)}</Departure>
         <People>
