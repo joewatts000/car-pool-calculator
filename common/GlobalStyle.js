@@ -28,8 +28,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
+    height: ${({ height }) => (height ? `${height}px` : '100%')};
+    overflow: hidden;
     min-height: 100vh;
     min-height: -webkit-fill-available;
     position: relative;
@@ -63,15 +63,11 @@ export const GlobalStyle = createGlobalStyle`
   input {
     font-family: inherit;
     font-size: 14px;
-    line-height: 28px;
     padding: 8px 16px;
     width: 100%;
-    min-height: 44px;
-    border: unset;
     border-radius: 4px;
-    outline-color: rgb(84 105 212 / 0.5);
-    background-color: rgb(255, 255, 255);
-    border: 0.5px solid rgb(7 7 7 / 100%);
+    outline: none;
+    border: 1px solid black;
   }
 
   input[type="file" i]::-webkit-file-upload-button {
