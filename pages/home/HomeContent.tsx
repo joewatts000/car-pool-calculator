@@ -115,7 +115,7 @@ const HomeContent = () => {
             <AddCarForm closePopup={closePopup} addCar={addCar} />
           </Popup>
         )}
-        <PrivacyLink href="/privacy">Privacy Policy</PrivacyLink>
+        <PrivacyLink href="/privacy">Privacy &amp; Cookies</PrivacyLink>
       </Main>
     </>
   );

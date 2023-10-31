@@ -9,7 +9,7 @@ function parseValue (value) {
   }
 }
 
-export function useWithLocalStorage (itemKey, initialValue, stateFn = useState) {
+export function useWithLocalStorage(itemKey, initialValue, stateFn = useState) {
   const isClient = useIsClient();
 
   const initialStorageValue = isClient ? window.localStorage.getItem(itemKey) : null
