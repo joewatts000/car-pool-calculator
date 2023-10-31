@@ -1,0 +1,48 @@
+import React from 'react';
+import styled from 'styled-components';
+import { GlobalStyle } from '../../common/GlobalStyle';
+
+const Main = styled.main`
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(
+    ${({ height }) => (height ? `${height}px` : '100%')} - var(--header-height)
+  );
+  width: 100%;
+  flex-direction: column;
+`;
+
+const Header = styled.div`
+  font-size: 0.85rem;
+  width: 100%;
+  padding: 8px;
+  background-color: white;
+  text-align: center;
+  height: var(--header-height);
+  border-bottom: 2px solid rgb(83 104 212 / 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const PageTitle = styled.h1`
+  margin: 0;
+  color: var(--color-primary);
+  letter-spacing: -1px;
+  font-weight: 800;
+`;
+
+const HomeContent = () => {
+  return (
+    <>
+      <GlobalStyle />
+      <Header>
+        <PageTitle>Car Pool Calculator: Privacy Policy</PageTitle>
+      </Header>
+      <Main id="scrolling-container">Privacy</Main>
+    </>
+  );
+};
+
+export default HomeContent;
