@@ -12,6 +12,8 @@ const Main = styled.main`
   );
   width: 100%;
   flex-direction: column;
+  max-width: 800px;
+  padding: 20px;
 `;
 
 const Header = styled.div`
@@ -26,11 +28,12 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const PageTitle = styled.h1`
+const PageTitle = styled.a`
   margin: 0;
   color: var(--color-primary);
   letter-spacing: -1px;
   font-weight: 800;
+  font-size: 20px;
 `;
 
 const HomeContent = () => {
@@ -38,9 +41,9 @@ const HomeContent = () => {
     <>
       <GlobalStyle />
       <Header>
-        <PageTitle>Car Pool Calculator: Privacy Policy</PageTitle>
+        <PageTitle href="/">Car Pool Calculator</PageTitle>
       </Header>
-      <Main id="scrolling-container">
+      <Main>
         <div>
           <h1>General Data Protection Regulation (GDPR) Compliance</h1>
           <h2>
@@ -129,11 +132,9 @@ const HomeContent = () => {
           </h3>
           <p>
             If you have any questions, concerns, or requests regarding your
-            personal data or this privacy notice, contact us at:{' '}
+            personal data or this privacy notice, contact us{' '}
             <strong>
-              <a href="mailto:squarepeoplesolutions@gmail.com">
-                squarepeoplesolutions@gmail.com
-              </a>
+              <a href="mailto:squarepeoplesolutions@gmail.com">here</a>
             </strong>
           </p>
         </div>

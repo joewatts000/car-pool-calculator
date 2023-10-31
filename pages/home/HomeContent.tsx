@@ -30,11 +30,15 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const PageTitle = styled.h1`
+const PageTitle = styled.a`
   margin: 0;
   color: var(--color-primary);
   letter-spacing: -1px;
   font-weight: 800;
+  font-size: 20px;
+`;
+const PrivacyLink = styled.a`
+  padding: 5px 0 20px 0;
 `;
 
 const HomeContent = () => {
@@ -101,7 +105,7 @@ const HomeContent = () => {
     <>
       <GlobalStyle height={height} />
       <Header>
-        <PageTitle>Car Pool Calculator</PageTitle>
+        <PageTitle href="/">Car Pool Calculator</PageTitle>
       </Header>
       <Main id="scrolling-container" height={height}>
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />
@@ -111,6 +115,7 @@ const HomeContent = () => {
             <AddCarForm closePopup={closePopup} addCar={addCar} />
           </Popup>
         )}
+        <PrivacyLink href="/privacy">Privacy Policy</PrivacyLink>
       </Main>
     </>
   );
