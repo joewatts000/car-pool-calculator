@@ -27,6 +27,11 @@ const DocumentHead = () => {
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4118691160715647"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
     </>
   );
