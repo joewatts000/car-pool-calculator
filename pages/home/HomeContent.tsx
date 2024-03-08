@@ -4,6 +4,7 @@ import Popup from '../../components/Popup';
 import AddCarForm from '../../components/car/AddCarForm';
 import Vehicles from '../../components/Vehicles';
 import Footer from '../../components/Footer';
+import IntroContent from '../../components/home/IntroContent';
 import { GlobalStyle } from '../../common/GlobalStyle';
 
 const Main = styled.main`
@@ -16,6 +17,7 @@ const Main = styled.main`
   );
   width: 100%;
   flex-direction: column;
+  position: relative;
 `;
 
 const Header = styled.div`

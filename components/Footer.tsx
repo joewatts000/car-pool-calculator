@@ -33,10 +33,21 @@ const FooterButton = styled(Button)`
   width: 100%;
   font-size: 13px;
   padding: 0.5rem;
+  box-shadow: 0px 0px 1px 1px #0000001a;
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+  }
+  ${({ withPulse }) => withPulse && 'animation: pulse 2s infinite;'}
 `;
 
 const Footer = ({ openPopup, resetCars }) => {
   const [isScreenShotting, setIsScreenShotting] = useState(false);
+  const [hasClicked, setHasClicked] = useState(false);
 
   const screenshot = useCallback(() => {
     setIsScreenShotting(true);
@@ -46,10 +57,16 @@ const Footer = ({ openPopup, resetCars }) => {
     }, 1000);
   }, []);
 
+  const handleAddVehicle = () => {
+    setHasClicked(true);
+    openPopup();
+  };
+
   return (
     <Box className="hide-when-screenshot">
-      <FooterButton onClick={openPopup}>Add Vehicle</FooterButton>
-      {/* <FooterButton onClick={saveConfig}>Save</FooterButton> */}
+      <FooterButton withPulse={!hasClicked} onClick={handleAddVehicle}>
+        Add Vehicle
+      </FooterButton>
       <FooterButton onClick={resetCars}>Reset</FooterButton>
       <FooterButton onClick={screenshot}>Screenshot</FooterButton>
       {isScreenShotting && <ScreenshotStyles />}
