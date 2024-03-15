@@ -24,27 +24,41 @@ const CarBox = styled.div`
   gap: 1rem;
   flex-wrap: wrap;
 `;
+const StartBox = styled.div`
+  text-align: center;
+  margin-top: 20px;
+
+  p {
+    font-size: 1.3rem;
+  }
+`;
+const Spacer = styled.div`
+  height: 50px;
+`;
 
 const Vehicles = ({ cars, deleteCar, updateCar }) => {
-  console.log(cars);
   return (
     <Box>
       {cars.length < 1 && <IntroContent />}
-      <CarBox>
-        {cars.length > 0 ? (
-          cars.map((car, index) => (
+      {cars.length > 0 ? (
+        cars.map((car, index) => (
+          <CarBox key={index}>
             <Car
-              key={index}
               car={car}
               deleteCar={deleteCar}
               index={index}
               updateCar={updateCar}
             />
-          ))
-        ) : (
-          <h2>Click &quot;Add vehicle&quot; below to start</h2>
-        )}
-      </CarBox>
+          </CarBox>
+        ))
+      ) : (
+        <StartBox>
+          <p>
+            Click <strong>&quot;Add vehicle&quot;</strong> below to start
+          </p>
+          <Spacer />
+        </StartBox>
+      )}
     </Box>
   );
 };

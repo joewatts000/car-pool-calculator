@@ -53,6 +53,7 @@ const PassengerPopup = ({
           <DeleteButton
             onClick={() => deletePassenger(passenger)}
             src="./delete.svg"
+            alt="Delete"
           />
         </SeatBox>
       ))}

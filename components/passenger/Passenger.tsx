@@ -9,14 +9,11 @@ import {
 import { Form, Formik, FormikHelpers, Field } from 'formik';
 
 interface Values {
-  // image: any;
   passengerName: string;
   isDriver: boolean;
 }
 
 const AddPassenger = ({ closePopup, onSubmit }) => {
-  // const [image, setImage] = useState('');
-
   const handleSubmit = useCallback(
     (data) => {
       const { passengerName, isDriver } = data;
@@ -25,10 +22,6 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
     },
     [closePopup, onSubmit]
   );
-
-  // const onChange = (e: any) => {
-  //   setImage(e.target.value);
-  // };
 
   return (
     <div>
@@ -47,13 +40,6 @@ const AddPassenger = ({ closePopup, onSubmit }) => {
         }}
       >
         <Form>
-          {/* <FieldGroup>
-            <Label htmlFor="image">Image</Label>
-            <FileInputBox>
-              <Field type="file" name="image" onChange={onChange} id="image" />
-              <FileName>{image}</FileName>
-            </FileInputBox>
-          </FieldGroup> */}
           <FieldGroup>
             <Label htmlFor="passengerName">Full Name</Label>
             <Field type="text" name="passengerName" id="passengerName" />
@@ -76,14 +62,5 @@ const Label = styled.label`
   display: block;
   min-width: 80px;
 `;
-// const FileInputBox = styled.div`
-//   input {
-//     height: 48px;
-//   }
-// `;
-// const FileName = styled.div`
-//   padding: 8px 0px;
-//   text-align: center;
-// `;
 
 export default AddPassenger;

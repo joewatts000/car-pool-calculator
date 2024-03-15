@@ -107,7 +107,9 @@ const HomeContent = () => {
     <>
       <GlobalStyle height={height} />
       <Header>
-        <PageTitle href="/">Car Pool Calculator</PageTitle>
+        <h1>
+          <PageTitle href="/">Car Pool Calculator</PageTitle>
+        </h1>
       </Header>
       <Main id="scrolling-container" height={height}>
         <Vehicles deleteCar={deleteCar} cars={cars} updateCar={updateCar} />

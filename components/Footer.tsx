@@ -27,6 +27,14 @@ const Box = styled.div`
   padding: 1rem 0.5rem;
   background-color: #fff;
   border-top: 2px solid rgb(83 104 212 / 80%);
+
+  @media (min-width: 768px) {
+    gap: 3rem;
+  }
+
+  @media (min-width: 990px) {
+    gap: 4rem;
+  }
 `;
 
 const FooterButton = styled(Button)`
@@ -36,10 +44,10 @@ const FooterButton = styled(Button)`
   box-shadow: 0px 0px 1px 1px #0000001a;
   @keyframes pulse {
     0% {
-      box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 0 0px rgb(83 104 212 / 70%);
     }
     100% {
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 20px rgb(83 104 212 / 0%);
     }
   }
   ${({ withPulse }) => withPulse && 'animation: pulse 2s infinite;'}
@@ -64,10 +72,10 @@ const Footer = ({ openPopup, resetCars }) => {
 
   return (
     <Box className="hide-when-screenshot">
+      <FooterButton onClick={resetCars}>Reset</FooterButton>
       <FooterButton withPulse={!hasClicked} onClick={handleAddVehicle}>
         Add Vehicle
       </FooterButton>
-      <FooterButton onClick={resetCars}>Reset</FooterButton>
       <FooterButton onClick={screenshot}>Screenshot</FooterButton>
       {isScreenShotting && <ScreenshotStyles />}
     </Box>

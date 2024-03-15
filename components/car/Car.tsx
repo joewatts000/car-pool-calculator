@@ -76,6 +76,7 @@ const Car = ({ car, deleteCar, index, updateCar }) => {
             onClick={() => deleteCar(index)}
             src="./delete.svg"
             className="hide-when-screenshot"
+            alt="Delete"
           />
         </VehicleInfo>
         <Departure>Departs: {getNiceDate(car.departureTime)}</Departure>
