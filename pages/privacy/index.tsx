@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GlobalStyle } from '../../common/GlobalStyle';
+import Link from 'next/link';
+import { Button } from '../../common/SharedStyles';
 
 const Main = styled.main`
   margin: auto;
@@ -36,12 +38,24 @@ const PageTitle = styled.a`
   font-size: 20px;
 `;
 
+const HomeLink = styled(Link)``;
+const StyledButton = styled(Button)`
+  display: block;
+  width: fit-content;
+  margin: 40px auto;
+`;
+const Spacer = styled.div`
+  height: 20px;
+`;
+
 const HomeContent = () => {
   return (
     <>
       <GlobalStyle />
       <Header>
-        <PageTitle href="/">Car Pool Calculator</PageTitle>
+        <h1>
+          <PageTitle href="/">Car Pool Calculator</PageTitle>
+        </h1>
       </Header>
       <Main>
         <div>
@@ -282,6 +296,10 @@ const HomeContent = () => {
           <ul>
             <li>Email: squarepeoplesolutions@gmail.com</li>
           </ul>
+          <StyledButton>
+            <HomeLink href="/">Back to Home</HomeLink>
+          </StyledButton>
+          <Spacer />
         </div>
       </Main>
     </>

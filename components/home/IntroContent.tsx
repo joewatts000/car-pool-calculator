@@ -10,8 +10,19 @@ const Intro = styled.div`
   bottom: 0;
   background-color: white;
 
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
   li {
     margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
   }
 `;
 
@@ -23,7 +34,7 @@ const IntroContent = () => {
   return (
     <Intro>
       <header>
-        <h1>Welcome to Car Pool Calculator</h1>
+        <h2>Welcome to Car Pool Calculator</h2>
         <p>
           Your ultimate tool for optimizing your travel plans while saving costs
           and reducing your carbon footprint!
@@ -34,21 +45,22 @@ const IntroContent = () => {
           <Spacer />
           <ol>
             <li>
-              <strong>Cost Savings:</strong> By sharing rides with others, you
-              can significantly reduce your transportation expenses. Our app
+              <strong>Cost Savings 💰 :</strong> By sharing rides with others,
+              you can significantly reduce your transportation expenses. Our app
               helps you identify the most economical carpooling arrangements,
               allowing you to split fuel costs and tolls among passengers,
               saving you money.
             </li>
             <li>
-              <strong>Carbon Savings:</strong> Every carpooling trip contributes
-              to a greener planet by reducing the number of vehicles on the road
-              and lowering greenhouse gas emissions. With Car Pool Calculator,
-              you can actively participate in environmental conservation efforts
-              and make a positive impact on the environment.
+              <strong>Carbon Savings 🌍 :</strong> Every carpooling trip
+              contributes to a greener planet by reducing the number of vehicles
+              on the road and lowering greenhouse gas emissions. With Car Pool
+              Calculator, you can actively participate in environmental
+              conservation efforts and make a positive impact on the
+              environment.
             </li>
             <li>
-              <strong>Efficiency:</strong> Say goodbye to the hassle of
+              <strong>Efficiency 🚘 :</strong> Say goodbye to the hassle of
               coordinating travel plans manually. Our app streamlines the
               process of organizing carpools, saving you time and effort.
               Whether you&apos;re planning a weekend getaway or commuting to
@@ -56,34 +68,34 @@ const IntroContent = () => {
               arrangements.
             </li>
             <li>
-              <strong>Customization:</strong> Tailor your carpooling
+              <strong>Customization 😎 :</strong> Tailor your carpooling
               arrangements according to your specific requirements. From
               specifying departure and return dates to selecting the number of
               passengers and drivers, our app offers flexibility to meet your
               unique needs.
             </li>
             <li>
-              <strong>User-Friendly Interface:</strong> Our intuitive interface
-              makes it easy for users of all levels to navigate the app and
-              create carpooling schedules effortlessly. Whether you&apos;re a
-              seasoned carpooler or new to the concept, Car Pool Calculator
-              simplifies the process for everyone.
+              <strong>User-Friendly Interface 🎛️ :</strong> Our intuitive
+              interface makes it easy for users of all levels to navigate the
+              app and create carpooling schedules effortlessly. Whether
+              you&apos;re a seasoned carpooler or new to the concept, Car Pool
+              Calculator simplifies the process for everyone.
             </li>
             <li>
-              <strong>Screenshot and share:</strong> Once you have your carpool
-              configured, you can take a screenshot and share it with your
-              friends, family or coworkers. This way, everyone knows the plan
-              and can join in on the fun.
+              <strong>Screenshot and share 🚀 :</strong> Once you have your
+              carpool configured, you can take a screenshot and share it with
+              your friends, family or coworkers. This way, everyone knows the
+              plan and can join in on the fun.
             </li>
             <li>
-              <strong>It&apos;s free!</strong>
+              <strong>It&apos;s free!</strong> So get started today 🥳
             </li>
           </ol>
         </section>
       </main>
       <footer>
         <p>
-          Join the movement towards sustainable transportation and
+          So join the movement towards sustainable transportation and
           cost-effective travel with Car Pool Calculator. Start optimizing your
           carpooling arrangements today and experience the benefits of
           collaborative commuting. Let&apos;s ride together for a greener and

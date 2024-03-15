@@ -28,17 +28,17 @@ const exportAsImage = async (element, imageFileName) => {
 };
 
 const downloadImage = (blob, fileName) => {
-  const fakeLink = window.document.createElement("a");
-  fakeLink.style = "display:none;";
-  fakeLink.download = fileName;
+  const link = window.document.createElement("a");
+  link.style = "display:none;";
+  link.download = fileName;
 
-  fakeLink.href = blob;
+  link.href = blob;
 
-  document.body.appendChild(fakeLink);
-  fakeLink.click();
-  document.body.removeChild(fakeLink);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-  fakeLink.remove();
+  link.remove();
 };
 
 export default exportAsImage;
