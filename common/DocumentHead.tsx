@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import Head from 'next/head';
 
 const DocumentHead = () => {
@@ -27,12 +28,12 @@ const DocumentHead = () => {
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <link rel="icon" href="/favicon.ico" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4118691160715647"
-          crossOrigin="anonymous"
-        ></script>
       </Head>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4118691160715647"
+        crossOrigin="anonymous"
+      />
     </>
   );
 };
